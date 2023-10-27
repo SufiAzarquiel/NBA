@@ -6,13 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    android:onClick="onClickTeam"
     app:cardBackgroundColor="@color/black"
     card_view:cardCornerRadius="20dp"
     card_view:cardElevation="1dp"
     card_view:cardUseCompatPadding="false"
     card_view:contentPadding="10dp">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +21,7 @@
         android:paddingBottom="20dp">
 
         <ImageView
-            android:id="@+id/ivRowIcon"
+            android:id="@+id/ivRowPlayerIcon"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/nba"
@@ -32,32 +30,32 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvRowName"
+            android:id="@+id/tvRowPlayerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lakers"
-            android:textColor="@color/malva"
-            android:textSize="25sp"
-            android:textAlignment="center"
             android:maxWidth="200dp"
+            android:text="Lakers"
+            android:textAlignment="center"
+            android:textColor="@color/malva"
+            android:textSize="20sp"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/ivRowIcon"
+            card_view:layout_constraintStart_toEndOf="@+id/ivRowPlayerIcon"
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvRowRecord"
+            android:id="@+id/tvRowTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="20dp"
             android:text="TextView"
             android:textColor="@color/malva"
             android:textSize="20sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/ivRowIcon" />
+            card_view:layout_constraintStart_toEndOf="@+id/ivRowPlayerIcon" />
 
         <TextView
-            android:id="@+id/tvRowConference"
+            android:id="@+id/tvRowPosition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

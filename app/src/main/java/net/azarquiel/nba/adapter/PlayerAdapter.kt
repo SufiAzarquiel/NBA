@@ -9,13 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import net.azarquiel.nba.R
-import net.azarquiel.nba.model.Team
+import net.azarquiel.nba.model.Player
 
-class Adapter(val context: Context,
-              val layout: Int
-) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class PlayerAdapter(val context: Context,
+                    val layout: Int
+) : RecyclerView.Adapter<PlayerAdapter.ViewHolder>() {
 
-    private var dataList: List<Team> = emptyList()
+    private var dataList: List<Player> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -32,31 +32,28 @@ class Adapter(val context: Context,
         return dataList.size
     }
 
-    internal fun setTeams(teams: List<Team>) {
-        this.dataList = teams
+    internal fun setPlayers(players: List<Player>) {
+        this.dataList = players
         notifyDataSetChanged()
     }
 
 
     class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
-        fun bind(dataItem: Team){
+        fun bind(dataItem: Player){
             // create view references
-            val ivRowIcon = itemView.findViewById(R.id.ivRowIcon) as ImageView
-            val tvRowName = itemView.findViewById(R.id.tvRowName) as TextView
-            val tvRowConference = itemView.findViewById(R.id.tvRowConference) as TextView
-            val tvRowRecord = itemView.findViewById(R.id.tvRowRecord) as TextView
+            val ivRowIcon = itemView.findViewById(R.id.ivRowPlayerIcon) as ImageView
+            val tvRowPlayerName = itemView.findViewById(R.id.tvRowPlayerName) as TextView
+            val tvRowPlayerTeam = itemView.findViewById(R.id.tvRowTeam) as TextView
+            val tvRowPosition = itemView.findViewById(R.id.tvRowPosition) as TextView
 
             // set values
-            tvRowRecord.text = dataItem.record
-            tvRowConference.text = dataItem.conference
-            tvRowName.text = dataItem.name
+            tvRowPosition.text = dataItem.position
+            tvRowPlayerTeam.text = dataItem.team
+            tvRowPlayerName.text = dataItem.firstName + " " + dataItem.lastName
             // load image from url
             Picasso.get()
-                .load(dataItem.url.toString())
+                .load(dataItem.headShotUrl.toString())
                 .into(ivRowIcon)
-
-            // add team to tag
-            itemView.tag = dataItem
         }
     }
 }

@@ -1,8 +1,10 @@
 package net.azarquiel.nba.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -15,6 +17,7 @@ import net.azarquiel.nba.model.Team
 import java.net.URL
 
 class MainActivity : AppCompatActivity() {
+    private var team: Team? = null
     private lateinit var adapter: Adapter
     private lateinit var rvTeams: RecyclerView
 
@@ -55,5 +58,13 @@ class MainActivity : AppCompatActivity() {
                 adapter.setTeams(result.toList())
             }
         }
+    }
+
+    fun onClickTeam(v: View) {
+        team = v.tag as Team;
+
+        var intent = Intent(this, PlayerActivity::class.java)
+        intent.putExtra("team", team)
+        startActivity(intent)
     }
 }
